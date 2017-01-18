@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <script>
+     $(function(){
+      $.ajax({
+          url:"http://api.openweathermap.org/data/2.5/weather?q=Penghu,tw&appid=2ea56b5aa14a15bbe3607a5b9e1469ac&units=metric",
+          dataType:"Json",
+          success:function(e){
+              console.log("SUCCESS");
+              console.log(e.coord.lon);
+              console.log(e.name);
+              console.log(e.main.temp);
+              console.log(e.weather[0].description);
+              $(".city").text(e.name);
+              $(".temp").text(e.main.temp);
+              $(".description").text(e.weather[0].description);
+             
+              
+         },
+          
+          error:function(){
+              console.log("AJAX ERROR!!");
+              alert("ERROR!!");
+      },
+          
+      });   
+        
+        
+        
+    });
+    
+    </script>
+    
+    
+    
+</head>
+<body>
+   <div class="container">
+    <div class="city"></div>
+    <div class="temp"></div>
+    <div class="description"></div>
+    
+    
+  </div>
+    
+</body>
+</html>

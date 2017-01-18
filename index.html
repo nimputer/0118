@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <script>
+    $(function(){
+        $.ajax({
+            url:"http://api.openweathermap.org/data/2.5/forecast/daily?q=Taipei,tw&units=metric&cnt=7&appid=2ea56b5aa14a15bbe3607a5b9e1469ac",
+            dataType:"json",
+            success:function(e){
+              $(".container").append(e.city.name);
+              $("e.list").each(function(){
+            var c = "<div>"+this.dt +"</div>"
+            c += "<div>"+this.temp.day+"</div>"
+            c += "<div>"+this.weather[0].description+"</div>"
+            c += "<div>"+this.weather[0].icon+"</div>"
+            $(".container").append(c);
+            
+        });
+             
+              
+        },
+        
+        error:function(){
+        console.log("ERROR");
+    }
+    
+    });
+        
+    });
+    
+    </script>
+    
+    
+</head>
+<body>
+   <div class="container">
+       
+       
+   </div>
+    
+</body>
+</html>
